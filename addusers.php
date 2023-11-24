@@ -19,7 +19,7 @@ try{
 			$role=2;
 			break;
 	}
-	$stmt = $conn->prepare("INSERT INTO tblusers1 (UserID,Surname,Forename,Password,Role)VALUES (null,:gender,:surname,:forename,:password,:role)");
+	$stmt = $conn->prepare("INSERT INTO tblusers1 (UserID,Surname,Forename,Password,Role)VALUES (null,:surname,:forename,:password,:role)");
 	$stmt->bindParam(':forename', $_POST["forename"]);
 	$stmt->bindParam(':surname', $_POST["surname"]);
 	$stmt->bindParam(':password', $_POST["passwd"]);
@@ -32,5 +32,5 @@ catch(PDOException $e)
 	}
 	
 $conn=null;
-header('Location: users.php');
+#header('Location: users.php');
 ?>
