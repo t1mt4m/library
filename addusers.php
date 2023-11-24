@@ -9,17 +9,17 @@ echo("submitted");
 try{		
 	include_once("connection.php");
 	switch($_POST["role"]){
-		case "Pupil":
+		case "user":
 			$role=0;
 			break;
-		case "Teacher":
+		case "librarian":
 			$role=1;
 			break;
-		case "Admin":
+		case "admin":
 			$role=2;
 			break;
 	}
-	$stmt = $conn->prepare("INSERT INTO TblUsers (UserID,Surname,Forename,Password,Role)VALUES (null,:gender,:surname,:forename,:password,:role)");
+	$stmt = $conn->prepare("INSERT INTO tblusers1 (UserID,Surname,Forename,Password,Role)VALUES (null,:gender,:surname,:forename,:password,:role)");
 	$stmt->bindParam(':forename', $_POST["forename"]);
 	$stmt->bindParam(':surname', $_POST["surname"]);
 	$stmt->bindParam(':password', $_POST["passwd"]);
