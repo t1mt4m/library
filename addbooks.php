@@ -6,7 +6,7 @@ echo("submitted");
         echo $_POST["booktitle"]."<br>";
         echo $_POST["bookauthor"]."<br>";
         echo $_POST["authorcode"]."<br>";
-        echo $_POST["genre"]."<br>";
+        echo $_POST["bookgenre"]."<br>";
        
 try{
     include_once("connection.php");
@@ -24,5 +24,5 @@ catch(PDOException $e)
 	}
 	
 $conn=null;
-header('Location: books.php');
+#header('Location: books.php');
 ?>
