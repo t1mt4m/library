@@ -9,6 +9,7 @@ echo("submitted");
         echo $_POST["genre"]."<br>";
        
 try{
+    include_once("connection.php");
 	$stmt = $conn->prepare("INSERT INTO tblbooks (isbn,booktitle,bookauthor,authorcode,bookgenre)VALUES (null,:isbn,:booktitle,:bookauthor,:authorcode,:bookgenre)");
 	$stmt->bindParam(':isbn', $_POST["isbn"]);
 	$stmt->bindParam(':booktitle', $_POST["booktitle"]);
