@@ -2,8 +2,7 @@
 array_map("htmlspecialchars", $_POST);
 
 echo("submitted");
-        echo $_POST["forename"]."<br>";
-        echo $_POST["surname"]."<br>";
+        echo $_POST["username"]."<br>";
         echo $_POST["passwd"]."<br>";
         
 try{		
@@ -15,12 +14,8 @@ try{
 		case "librarian":
 			$role=1;
 			break;
-		case "admin":
-			$role=2;
-			break;
 	}
-	$stmt = $conn->prepare("INSERT INTO tblusers1 (UserID,Surname,Forename,Password,Role)VALUES (null,:surname,:forename,:password,:role)");
-	$stmt->bindParam(':forename', $_POST["forename"]);
+	$stmt = $conn->prepare("INSERT INTO tblusers1 (UserID,username,Password,Role)VALUES (null,:username,:password,:role)");
 	$stmt->bindParam(':surname', $_POST["surname"]);
 	$stmt->bindParam(':password', $_POST["passwd"]);
 	$stmt->bindParam(':role', $role);

@@ -1,16 +1,12 @@
 <?php
 array_map("htmlspecialchars", $_POST);
+print_r($_POST);
 
-echo("submitted");
-        echo $_POST["isbn"]."<br>";
-        echo $_POST["booktitle"]."<br>";
-        echo $_POST["bookauthor"]."<br>";
-        echo $_POST["authorcode"]."<br>";
-        echo $_POST["bookgenre"]."<br>";
-       
+    
 try{
     include_once("connection.php");
-	$stmt = $conn->prepare("INSERT INTO tblbooks (isbn,booktitle,bookauthor,authorcode,bookgenre)VALUES (null,:isbn,:booktitle,:bookauthor,:authorcode,:bookgenre)");
+	$stmt = $conn->prepare("INSERT INTO tblbooks (isbn,booktitle,bookauthor,authorcode,bookgenre)
+	VALUES (:isbn,:booktitle,:bookauthor,:authorcode,:bookgenre)");
 	$stmt->bindParam(':isbn', $_POST["isbn"]);
 	$stmt->bindParam(':booktitle', $_POST["booktitle"]);
 	$stmt->bindParam(':bookauthor', $_POST["bookauthor"]);
