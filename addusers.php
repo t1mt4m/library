@@ -1,7 +1,7 @@
 <?php
 array_map("htmlspecialchars", $_POST);
 
-echo("submitted");
+echo("submitted")."<br>";
         echo $_POST["username"]."<br>";
         echo $_POST["passwd"]."<br>";
         
@@ -16,7 +16,7 @@ try{
 			break;
 	}
 	$stmt = $conn->prepare("INSERT INTO tblusers1 (UserID,username,Password,Role)VALUES (null,:username,:password,:role)");
-	$stmt->bindParam(':surname', $_POST["surname"]);
+	$stmt->bindParam(':username', $_POST["username"]);
 	$stmt->bindParam(':password', $_POST["passwd"]);
 	$stmt->bindParam(':role', $role);
 	$stmt->execute();
@@ -27,5 +27,5 @@ catch(PDOException $e)
 	}
 	
 $conn=null;
-header('Location: users.php');
+#header('Location: users.php');
 ?>
